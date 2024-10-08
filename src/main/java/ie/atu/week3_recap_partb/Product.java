@@ -1,28 +1,25 @@
 package ie.atu.week3_recap_partb;
 
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PositiveOrZero;
-import jakarta.validation.constraints.Size;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Product {
 
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public class Product {
+    @NotNull(message = "Must have a value")
+    @PositiveOrZero(message = "Cannot be a negative number")
+    private long id;
 
-        @NotNull(message = "ID cannot be NULL")
-        private long id;
+    @NotBlank(message = "A value need to be entered")
+    @Size(min = 3, max=30, message = "Name must be between 3 to 30 characters")
+    private String name;
 
-        @NotBlank(message = "Name cannot be Blank")
-        @Size(min = 1, max=50, message = "Name must be between 1 to 50")
-        private String name;
-
-        @PositiveOrZero(message = "Price must be positive or 0")
-        private double price;
-
-    }
+    @PositiveOrZero(message = "Cannot be a negative number")
+    @Max(value=1000, message = "Enter a smaller value")
+    private double price;
+}
 

@@ -10,6 +10,6 @@ public class InventoryService {
 
     public String addProduct(Product product) {
         inventoryList.add(product);
-        return "Product added successfully to warehouse";
+        return "Product added successfully to inventory";
     }
 }
